@@ -7,6 +7,7 @@
 		<tr>
 			<td>Asertividad:</td>
 			<td><b><%= "#{'%.2f' % monto} %" %></b></td>
+			<td><b><%= monto.nan? ? '-' : "#{'%.2f' % par.asertividad} %" %></b></td>
 		</tr>
 		<tr>
 			<td>Ganados:</td>
