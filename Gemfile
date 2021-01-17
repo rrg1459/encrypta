@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.5'
+ruby RUBY_VERSION
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
@@ -69,5 +69,5 @@ gem 'mini_magick'
 # gem 'activeadmin'
 
 gem 'bootstrap',    '~> 4.2', '>= 4.2.1'    # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
-# gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application. 
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application. 
 gem 'jquery-datatables-rails', '~> 3.4.0'

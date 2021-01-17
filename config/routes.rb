@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   resources :canales
-  ActiveAdmin.routes(self)
   resources :pares
   resources :relojes
   resources :numeros
