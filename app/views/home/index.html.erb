@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Home</h1>
+
+<%= form_with(model: @numero, local: true) do |form| %>
+<!--  -->
+
+  <div class="field">
+    <%= form.label :canal %>
+    <%= form.select(:canal_id, Canal.all.collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un canal' }, :required => true) %>
+  </div>
+
+	<div class="field">
+		<%= form.label :fondo %>
+		<%= form.number_field :fondo %>
+	</div>
+
+	<div class="field">
+		<%= form.label "Inversión USD" %>
+		<%= form.number_field :inversion %>
+	</div>
+
+	<div class="field">
+		<%= form.label :porcentaje %>
+		<%= form.number_field :porcentaje %>
+	</div>
+
+	<br>
+	<div class="actions">
+		<%= form.submit "Actualiza números" %>
+	</div>
+<% end %>
+<br>
+
+<%= render '/opciones/resultados' %>
+<%= link_to 'Nueva Opción', new_opcion_path %>
+<%= render '/home/botones_generales' %>
+

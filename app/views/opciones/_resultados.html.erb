@@ -1,0 +1,37 @@
+<% opcion = Opcion.all %>
+<% monto = opcion.where(resultado: 'G').size.to_f * 100 / opcion.all.size %>
+<% balance = opcion.saldo_total - Numero.first.fondo %>
+<br>
+<table class='ancho'>
+	<tbody>
+		<tr>
+			<td>Asertividad:</td>
+			<td><b><%= "#{'%.2f' % monto} %" %></b></td>
+		</tr>
+		<tr>
+			<td>Ganados:</td>
+			<td><b><%= "#{opcion.where(resultado: 'G').size}" %></b></td>
+		</tr>
+		<tr>
+			<td>Perdidos:</td>
+			<td><b><%= "#{opcion.where(resultado: 'P').size}" %></b></td>
+		</tr>
+		<tr>
+			<td>Empatados:</td>
+			<td><b><%= "#{opcion.where(resultado: 'E').size}" %></b></td>
+		</tr>
+		<tr><td></td></tr>
+		<tr>
+			<td>Fondo:</td>
+			<td><b><%= number_to_currency(Numero.first.fondo, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></b></td>
+		</tr>
+		<tr>
+			<td>Saldo:</td>
+			<td><b><%= number_to_currency(opcion.saldo_total, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></b></td>
+		</tr>
+		<tr>
+			<td>Balance general:</td>
+			<td class="<%= color(balance) %>"><b><%= number_to_currency(balance, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></b></td>
+		</tr>
+	</tbody>
+</table>

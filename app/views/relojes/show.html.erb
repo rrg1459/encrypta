@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Minuto:</strong>
+  <%= @reloj.minuto %>
+</p>
+
+<%= link_to 'Editar', edit_reloj_path(@reloj) %> |
+<%= link_to 'Regresar al listado', relojes_path %>
+<%= render '/home/botones_generales' %>

@@ -1,0 +1,37 @@
+<%= form_with(model: numero, local: true) do |form| %>
+  <% if numero.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(numero.errors.count, "error") %> prohibited this numero from being saved:</h2>
+
+      <ul>
+      <% numero.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :canal %>
+    <%= form.select(:canal_id, Canal.all.collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un canal' }, :required => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inversion %>
+    <%= form.number_field :inversion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fondo %>
+    <%= form.number_field :fondo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :porcentaje %>
+    <%= form.number_field :porcentaje %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar" %>
+  </div>
+<% end %>

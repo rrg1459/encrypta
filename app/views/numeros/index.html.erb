@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Numeros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Inversion</th>
+      <th>Fondo</th>
+      <th>Porcentaje</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @numeros.each do |numero| %>
+      <tr>
+        <td><%= numero.inversion %></td>
+        <td><%= numero.fondo %></td>
+        <td><%= numero.porcentaje %></td>
+        <td><%= link_to 'Mostrar', numero %></td>
+        <td><%= link_to 'Editar', edit_numero_path(numero) %></td>
+        <td><%= link_to 'Borrar', numero, method: :delete, data: { confirm: '¿Está usted seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Número', new_numero_path %>

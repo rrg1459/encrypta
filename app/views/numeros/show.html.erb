@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inversion:</strong>
+  <%= @numero.inversion %>
+</p>
+
+<p>
+  <strong>Fondo:</strong>
+  <%= @numero.fondo %>
+</p>
+
+<p>
+  <strong>Porcentaje:</strong>
+  <%= @numero.porcentaje %>
+</p>
+
+<%= link_to 'Edit', edit_numero_path(@numero) %> |
+<%= link_to 'Back', numeros_path %>

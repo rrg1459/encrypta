@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Par:</strong>
+  <%= @par.nombre %>
+</p>
+
+<p>
+  <%= image_tag(@par.imagen_url) %>
+</p>
+
+<%= link_to 'New Par', new_par_path %> |
+<%= link_to 'Edit', edit_par_path(@par) %> |
+<%= link_to 'Back', pares_path %>
+<%= render '/home/botones_generales' %>

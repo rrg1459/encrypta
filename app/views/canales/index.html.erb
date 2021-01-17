@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Canales</h1>
+
+<%= render '/home/botones_generales' %>
+
+<%= render '/opciones/resultados' %>
+
+<col>
+<table class="datatable table table-hover table-striped display responsive no-wrap" id="tablas">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ganadas</th>
+      <th>Perdidas</th>
+      <th>Empatadas</th>
+      <th>Asertividad</th>
+      <th>Balance</th>
+      <th>Acciones</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @canales.each do |canal| %>
+      <tr>
+        <td><%= canal.nombre %></td>
+        <td><%= canal.ganadas %></td>
+        <td><%= canal.perdidas %></td>
+        <td><%= canal.empatadas %></td>
+        <td><%= "#{'%.2f' % canal.asertividad} %" %></td>
+        <td class="<%= color(canal.balance) %>"><%= number_to_currency(canal.balance, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></td>
+        <td>
+          <%= link_to 'Mostrar', canal %>
+          <%= link_to 'Editar', edit_canal_path(canal) %>
+          <%= link_to 'Borrar', canal, method: :delete, data: { confirm: '¿Está usted seguro?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Canal', new_canal_path %>
+

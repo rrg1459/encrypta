@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  juliano: 1
+  resultado: MyString
+  porcentaje: 1
+
+two:
+  juliano: 1
+  resultado: MyString
+  porcentaje: 1

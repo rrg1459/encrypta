@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Juliano:</strong>
+  <%= @opcion.juliano %>
+</p>
+
+<p>
+  <strong>Resultado:</strong>
+  <%= @opcion.resultado %>
+</p>
+
+<p>
+  <strong>Porcentaje:</strong>
+  <%= @opcion.porcentaje %>
+</p>
+
+<%= link_to 'Editar', edit_opcion_path(@opcion) %> |
+<%= link_to 'Regresar al listado', opciones_path %> |
+<%= link_to 'Regresar al home', home_path %>
+<br>
+<br>
+<%= link_to 'Nueva Opción', new_opcion_path %>
+<%= render '/home/botones_generales' %>
