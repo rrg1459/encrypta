@@ -18,7 +18,7 @@
         <td>
           <%= link_to 'Mostrar', reloj %>
           <%= link_to 'Editar', edit_reloj_path(reloj) %>
-          <%= link_to 'Borrar', reloj, method: :delete, data: { confirm: '¿Está usted seguro?' } %>
+          <%= link_to 'Borrar', reloj, method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar' } %>
         </td>
       </tr>
     <% end %>

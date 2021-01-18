@@ -72,3 +72,4 @@ gem 'bootstrap',    '~> 4.2', '>= 4.2.1'    # The most popular HTML, CSS, and Ja
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application. 
 gem 'jquery-datatables-rails', '~> 3.4.0'
 
+gem 'data-confirm-modal'

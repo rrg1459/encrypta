@@ -21,6 +21,8 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/dataTables.responsive
 
+//= require data-confirm-modal
+
 //= require_tree .
 
 $(document).on("turbolinks:load", function () {

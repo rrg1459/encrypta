@@ -33,7 +33,7 @@
         <td>
           <%= link_to 'Mostrar', canal %>
           <%= link_to 'Editar', edit_canal_path(canal) %>
-          <%= link_to 'Borrar', canal, method: :delete, data: { confirm: '¿Está usted seguro?' } %>
+          <%= link_to 'Borrar', canal, method: :delete, data: { title: '¿Está usted seguro?' } %>
         </td>
       </tr>
     <% end %>
