@@ -1,15 +1,4 @@
 <%= form_with(model: par, local: true) do |form| %>
-  <% if par.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(par.errors.count, "error") %> prohibited this par from being saved:</h2>
-
-      <ul>
-      <% par.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :nombre %>
@@ -18,12 +7,12 @@
 
 <!--   <br>
   <%#= image_tag(par.imagen_url) if par.imagen? %>
-  <br> -->
+  <br>
   <br>
   <div class="field">
 
     <%= form.file_field :imagen %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= form.submit "Guardar" %>

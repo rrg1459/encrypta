@@ -24,13 +24,17 @@ class ParesController < ApplicationController
   # POST /pars
   # POST /pars.json
   def create
+    # byebug
     @par = Par.new(par_params)
 
     respond_to do |format|
       if @par.save
-        format.html { redirect_to @par, notice: 'Par fue creado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @par }
         format.json { render :show, status: :created, location: @par }
       else
+        # flash[:error] = " Tenemos problemas en encontrar este artículo #{root_url}articulo/#{params[:id]}, por favor contactenos para solucionarlo"
+        flash[:error] = t(:no_guardado)
         format.html { render :new }
         format.json { render json: @par.errors, status: :unprocessable_entity }
       end
@@ -42,9 +46,11 @@ class ParesController < ApplicationController
   def update
     respond_to do |format|
       if @par.update(par_params)
-        format.html { redirect_to @par, notice: 'Par fue actualizado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @par }
         format.json { render :show, status: :ok, location: @par }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :edit }
         format.json { render json: @par.errors, status: :unprocessable_entity }
       end
@@ -56,7 +62,8 @@ class ParesController < ApplicationController
   def destroy
     @par.destroy
     respond_to do |format|
-      format.html { redirect_to pares_url, notice: 'Par fue borrado.' }
+      flash[:success] = t(:borrado)
+      format.html { redirect_to pares_url }
       format.json { head :no_content }
     end
   end

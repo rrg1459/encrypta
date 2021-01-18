@@ -27,9 +27,11 @@ class NumerosController < ApplicationController
     @numero = Numero.new(numero_params)
     respond_to do |format|
       if @numero.save
-        format.html { redirect_to @numero, notice: 'Numero fue creado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @numero }
         format.json { render :show, status: :created, location: @numero }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :new }
         format.json { render json: @numero.errors, status: :unprocessable_entity }
       end
@@ -41,10 +43,12 @@ class NumerosController < ApplicationController
   def update
     respond_to do |format|
       if @numero.update(numero_params)
-        format.html { redirect_to root_url, notice: 'Los números fueron actualizados correctamente' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to root_url }
         # format.html { redirect_to @numero, notice: 'Numero fue actualizado.' }
         format.json { render :show, status: :ok, location: @numero }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :edit }
         format.json { render json: @numero.errors, status: :unprocessable_entity }
       end
@@ -56,7 +60,8 @@ class NumerosController < ApplicationController
   def destroy
     @numero.destroy
     respond_to do |format|
-      format.html { redirect_to numeros_url, notice: 'Numero fue borrado.' }
+      flash[:success] = t(:borrado)
+      format.html { redirect_to numeros_url }
       format.json { head :no_content }
     end
   end

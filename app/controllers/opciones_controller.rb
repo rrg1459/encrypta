@@ -37,9 +37,11 @@ class OpcionesController < ApplicationController
     @opcion.tipo.downcase!
     respond_to do |format|
       if @opcion.save
-        format.html { redirect_to opciones_url, notice: 'IQ Opción CREADA correctamente' }
+        flash[:success] = 'IQ Opción CREADA correctamente'
+        format.html { redirect_to opciones_url }
         format.json { render :show, status: :created, location: @opcion }
       else
+        flash[:error] = 'No se pudo crear la IQ Opción'
         format.html { render :new }
         format.json { render json: @opcion.errors, status: :unprocessable_entity }
       end
@@ -51,9 +53,11 @@ class OpcionesController < ApplicationController
   def update
     respond_to do |format|
       if @opcion.update(option_params)
-        format.html { redirect_to @opcion, notice: 'IQ Opción ACTUALIZADA correctamente' }
+        flash[:success] = 'IQ Opción ACTUALIZADA correctamente'
+        format.html { redirect_to @opcion }
         format.json { render :show, status: :ok, location: @opcion }
       else
+        flash[:error] = 'No se pudo actualizar la IQ Opción'
         format.html { render :edit }
         format.json { render json: @opcion.errors, status: :unprocessable_entity }
       end
@@ -65,7 +69,8 @@ class OpcionesController < ApplicationController
   def destroy
     @opcion.destroy
     respond_to do |format|
-      format.html { redirect_to opciones_url, notice: 'IQ Opción BORRADA correctamente' }
+      flash[:success] = 'IQ Opción BORRADA correctamente'
+      format.html { redirect_to opciones_url }
       format.json { head :no_content }
     end
   end

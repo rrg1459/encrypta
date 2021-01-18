@@ -1,15 +1,4 @@
 <%= form_with(model: numero, local: true) do |form| %>
-  <% if numero.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(numero.errors.count, "error") %> prohibited this numero from being saved:</h2>
-
-      <ul>
-      <% numero.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :canal %>

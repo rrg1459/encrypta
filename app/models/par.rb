@@ -4,6 +4,8 @@ class Par < ApplicationRecord
 
 	mount_uploader :imagen, ImagenUploader
 
+	validates :nombre, presence: true
+
 	def asertividad
 		opciones.size == 0 ? 0 : opciones.where(resultado: 'G').size.to_f * 100 / opciones.size
 	end

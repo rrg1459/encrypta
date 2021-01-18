@@ -28,9 +28,11 @@ class RelojesController < ApplicationController
 
     respond_to do |format|
       if @reloj.save
-        format.html { redirect_to @reloj, notice: 'Reloj fue creado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @reloj }
         format.json { render :show, status: :created, location: @reloj }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :new }
         format.json { render json: @reloj.errors, status: :unprocessable_entity }
       end
@@ -42,9 +44,11 @@ class RelojesController < ApplicationController
   def update
     respond_to do |format|
       if @reloj.update(reloj_params)
-        format.html { redirect_to @reloj, notice: 'Reloj fue actualizado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @reloj }
         format.json { render :show, status: :ok, location: @reloj }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :edit }
         format.json { render json: @reloj.errors, status: :unprocessable_entity }
       end
@@ -56,7 +60,8 @@ class RelojesController < ApplicationController
   def destroy
     @reloj.destroy
     respond_to do |format|
-      format.html { redirect_to relojes_url, notice: 'Reloj fue borrado.' }
+      flash[:success] = t(:borrado)
+      format.html { redirect_to relojes_url }
       format.json { head :no_content }
     end
   end

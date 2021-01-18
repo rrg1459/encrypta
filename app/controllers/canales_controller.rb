@@ -29,9 +29,11 @@ class CanalesController < ApplicationController
 
     respond_to do |format|
       if @canal.save
-        format.html { redirect_to @canal, notice: 'Canal fue creado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @canal }
         format.json { render :show, status: :created, location: @canal }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :new }
         format.json { render json: @canal.errors, status: :unprocessable_entity }
       end
@@ -43,9 +45,11 @@ class CanalesController < ApplicationController
   def update
     respond_to do |format|
       if @canal.update(par_params)
-        format.html { redirect_to @canal, notice: 'Canal fue actualizado.' }
+        flash[:success] = t(:guardado)
+        format.html { redirect_to @canal }
         format.json { render :show, status: :ok, location: @canal }
       else
+        flash[:error] = t(:no_guardado)
         format.html { render :edit }
         format.json { render json: @canal.errors, status: :unprocessable_entity }
       end
@@ -57,7 +61,8 @@ class CanalesController < ApplicationController
   def destroy
     @canal.destroy
     respond_to do |format|
-      format.html { redirect_to canales_url, notice: 'Canal fue borrado.' }
+      flash[:success] = t(:borrado)
+      format.html { redirect_to canales_url }
       format.json { head :no_content }
     end
   end

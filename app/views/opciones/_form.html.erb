@@ -1,15 +1,4 @@
 <%= form_with(model: opcion, local: true) do |form| %>
-  <% if opcion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(opcion.errors.count, "error") %> prohibited this opcion from being saved:</h2>
-
-      <ul>
-      <% opcion.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%= form.hidden_field :canal_id, :value => Numero.first.canal_id %>
 

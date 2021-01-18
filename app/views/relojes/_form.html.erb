@@ -1,15 +1,4 @@
 <%= form_with(model: reloj, local: true) do |form| %>
-  <% if reloj.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(reloj.errors.count, "error") %> prohibited this reloj from being saved:</h2>
-
-      <ul>
-      <% reloj.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :minuto %>

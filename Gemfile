@@ -66,8 +66,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 gem 'mini_magick'
 
-# gem 'activeadmin'
+gem 'slim-rails',                   '~> 3.2'      # Provides the generator settings required for Rails 3+ to use Slim
 
 gem 'bootstrap',    '~> 4.2', '>= 4.2.1'    # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application. 
 gem 'jquery-datatables-rails', '~> 3.4.0'
+
