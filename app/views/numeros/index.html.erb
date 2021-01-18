@@ -21,6 +21,7 @@
         <td><%= link_to 'Mostrar', numero %></td>
         <td><%= link_to 'Editar', edit_numero_path(numero) %></td>
         <td><%= link_to 'Borrar', numero, method: :delete, data: { confirm: '¿Está usted seguro?' } %></td>
+        <td><%= link_to 'Borrar', canal, method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %></td>
       </tr>
     <% end %>
   </tbody>

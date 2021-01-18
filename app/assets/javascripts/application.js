@@ -27,8 +27,10 @@
 
 $(document).on("turbolinks:load", function () {
 
-  $('#tablas').DataTable({
-    responsive: true,
-    language: { url: "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json" }
-  });
+	$('#tablas').DataTable({
+		responsive: true,
+		language: { url: "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json" }
+	});
+
 });
+

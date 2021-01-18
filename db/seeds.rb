@@ -6,9 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Canal.create({nombre: 'Mi analisis'})
+Canal.destroy_all
 
-# Numero.create({ inversion: 1, fondo: 100, porcentaje: 87, canal_id: Canal.first.id})
+Canal.create({nombre: 'Mi analisis'})
+
+Numero.destroy_all
+
+Numero.create({ inversion: 1, fondo: 100, porcentaje: 87, canal_id: Canal.first.id})
+
+Par.destroy_all
 
 Par.create({ nombre: "AUD/CAD" })
 Par.create({ nombre: "AUD/NZD" })

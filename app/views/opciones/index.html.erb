@@ -38,7 +38,7 @@
         <!--         
         <td><%#= link_to 'Mostrar', opcion %></td>
         <td><%#= link_to 'Editar', edit_opcion_path(opcion) %></td>
-        <td><%#= link_to 'Borrar', opcion, method: :delete, data: { confirm: '¿Está usted seguro?' } %></td>
+        <td><%#= link_to 'Borrar', reloj, method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %></td>
          -->
       </tr>
     <% end %>
