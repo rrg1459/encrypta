@@ -14,6 +14,13 @@ Numero.destroy_all
 
 Numero.create({ inversion: 1, fondo: 100, porcentaje: 87, canal_id: Canal.first.id})
 
+Reloj.destroy_all
+
+Reloj.create({minuto:  1})
+Reloj.create({minuto:  2})
+Reloj.create({minuto:  5})
+Reloj.create({minuto: 10})
+
 Par.destroy_all
 
 Par.create({ nombre: "AUD/CAD" })

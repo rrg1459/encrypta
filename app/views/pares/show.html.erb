@@ -8,8 +8,10 @@
 <!-- <p>
   <%#= image_tag(@par.imagen_url) %>
 </p> -->
+<%= link_to 'Editar', edit_par_path(@par), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+<%= link_to 'Borrar', @par, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+
 
 <%= link_to 'Nuevo Par', new_par_path %> |
-<%= link_to 'Editar', edit_par_path(@par) %> |
 <%= link_to 'Regresar al listado', pares_path %>
 <%= render '/home/botones_generales' %>

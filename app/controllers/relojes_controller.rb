@@ -55,13 +55,17 @@ class RelojesController < ApplicationController
     end
   end
 
-  # DELETE /relojs/1
-  # DELETE /relojs/1.json
+  # DELETE /pars/1
+  # DELETE /pars/1.json
   def destroy
-    @reloj.destroy
-    respond_to do |format|
+    begin
+      @reloj.destroy
       flash[:success] = t(:borrado)
-      format.html { redirect_to relojes_url }
+    rescue => e
+      flash[:error] = (@reloj.opciones.size > 0) ? t(:reloj_no_borrado) : t(:desconocido)
+    end
+    respond_to do |format|
+      format.html { redirect_to (flash[:error].nil?) ? relojes_url : @reloj }
       format.json { head :no_content }
     end
   end

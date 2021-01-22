@@ -8,6 +8,10 @@ es:
   guardado: Se guardó el registro
   no_guardado: No se pudo guardar el registro
   borrado: Se borró el registro
+  canal_no_borrado: No se pudo borrar el canal porque tiene opciones asociadas
+  reloj_no_borrado: No se pudo borrar el reloj porque tiene opciones asociadas
+  par_no_borrado: No se pudo borrar el par porque tiene opciones asociadas
+  desconocido: Se presentó un error desconocido, por favor contacte al administrador
 
   date:
     abbr_day_names:

@@ -15,5 +15,7 @@
   <%= @numero.porcentaje %>
 </p>
 
-<%= link_to 'Edit', edit_numero_path(@numero) %> |
-<%= link_to 'Back', numeros_path %>
+<%= link_to 'Editar', edit_numero_path(@numero), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+<%= link_to 'Borrar', @numero, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+
+<%= link_to 'Regresar al listado', numeros_path %>

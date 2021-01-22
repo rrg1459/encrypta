@@ -22,18 +22,18 @@ class Canal < ApplicationRecord
 		opciones.where(resultado: 'E').size
 	end
 
-  def saldo
-    saldo_ganadas - saldo_perdidas
-  end
+	def saldo
+		saldo_ganadas - saldo_perdidas
+	end
 
-  private
+	private
 
-  def saldo_ganadas
-    opciones.ganadas.sum("inversion * porcentaje ").to_f / 100
-  end
+	def saldo_ganadas
+		opciones.ganadas.sum("inversion * porcentaje ").to_f / 100
+	end
 
-  def saldo_perdidas
-    opciones.perdidas.sum(:inversion).to_f
-  end
+	def saldo_perdidas
+		opciones.perdidas.sum(:inversion).to_f
+	end
 
 end

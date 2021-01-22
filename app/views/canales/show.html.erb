@@ -5,7 +5,10 @@
   <%= @canal.nombre %>
 </p>
 
-<%= link_to 'Editar', edit_canal_path(@canal) %> |
+<%= link_to 'Editar', edit_canal_path(@canal), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+<%= link_to 'Borrar', @canal, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+
+<%#= link_to 'Editar', edit_canal_path(@canal) %> |
 <%= link_to 'Regresar', canales_path %>
 <%= link_to 'Regresar al home', home_path %>
 <br>

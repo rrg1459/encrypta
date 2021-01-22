@@ -14,9 +14,9 @@ class CreateOpciones < ActiveRecord::Migration[5.2]
       t.datetime :updated_at, null: false, default: -> { 'CURRENT_TIMESTAMP' }
     end
 
-    add_foreign_key :opciones, :pares,   on_delete: :cascade, column: :par_id
-    add_foreign_key :opciones, :relojes, on_delete: :cascade, column: :reloj_id
-    add_foreign_key :opciones, :canales, on_delete: :cascade, column: :canal_id
+    add_foreign_key :opciones, :pares
+    add_foreign_key :opciones, :relojes
+    add_foreign_key :opciones, :canales
 
   end
 end

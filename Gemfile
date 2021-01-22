@@ -68,6 +68,7 @@ gem 'mini_magick'
 
 gem 'slim-rails',                   '~> 3.2'      # Provides the generator settings required for Rails 3+ to use Slim
 
+gem 'font-awesome-rails', '~> 4.7'          # font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
 gem 'bootstrap',    '~> 4.2', '>= 4.2.1'    # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application. 
 gem 'jquery-datatables-rails', '~> 3.4.0'

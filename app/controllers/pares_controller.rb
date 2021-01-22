@@ -24,7 +24,6 @@ class ParesController < ApplicationController
   # POST /pars
   # POST /pars.json
   def create
-    # byebug
     @par = Par.new(par_params)
 
     respond_to do |format|
@@ -67,6 +66,22 @@ class ParesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # DELETE /pars/1
+  # DELETE /pars/1.json
+  def destroy
+    begin
+      @par.destroy
+      flash[:success] = t(:borrado)
+    rescue => e
+      flash[:error] = (@par.opciones.size > 0) ? t(:par_no_borrado) : t(:desconocido)
+    end
+    respond_to do |format|
+      format.html { redirect_to (flash[:error].nil?) ? pares_url : @par }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

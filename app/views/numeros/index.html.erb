@@ -2,13 +2,13 @@
 
 <h1>Numeros</h1>
 
-<table>
+<table class="datatable table table-hover table-striped display responsive no-wrap" id="tablas">
   <thead>
     <tr>
       <th>Inversion</th>
       <th>Fondo</th>
       <th>Porcentaje</th>
-      <th colspan="3"></th>
+      <th>Acción</th>
     </tr>
   </thead>
 
@@ -19,9 +19,7 @@
         <td><%= numero.fondo %></td>
         <td><%= numero.porcentaje %></td>
         <td><%= link_to 'Mostrar', numero %></td>
-        <td><%= link_to 'Editar', edit_numero_path(numero) %></td>
-        <td><%= link_to 'Borrar', numero, method: :delete, data: { confirm: '¿Está usted seguro?' } %></td>
-        <td><%= link_to 'Borrar', canal, method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %></td>
+        <td><%= link_to '', numero, class:'fa fa-eye btn btn-sm btn-outline-primary', title: 'Ver/Editar/Borrar' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -59,10 +59,14 @@ class CanalesController < ApplicationController
   # DELETE /pars/1
   # DELETE /pars/1.json
   def destroy
-    @canal.destroy
-    respond_to do |format|
+    begin
+      @canal.destroy
       flash[:success] = t(:borrado)
-      format.html { redirect_to canales_url }
+    rescue => e
+      flash[:error] = (@canal.opciones.size > 0) ? t(:canal_no_borrado) : t(:desconocido)
+    end
+    respond_to do |format|
+      format.html { redirect_to (flash[:error].nil?) ? canales_url : @canal }
       format.json { head :no_content }
     end
   end
