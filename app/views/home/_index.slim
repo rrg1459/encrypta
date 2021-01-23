@@ -1,0 +1,80 @@
+
+- opcion = Opcion.all
+- monto = opcion.where(resultado: 'G').size * 10000 / opcion.all.size
+- monto = monto.to_f / 100
+- monto = 100 if monto.nan?
+- resto = 100 - monto
+
+.my-4
+		#grafica
+
+.my-3
+	| &nbsp;
+
+javascript:
+
+	var letrasColor = '#333';
+
+	// ---------------------------------------------------------------------------
+	// Radialize the colors
+	Highcharts.setOptions({
+		colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+			return {
+				radialGradient: {
+					cx: 0.5,
+					cy: 0.3,
+					r: 0.7
+				},
+				stops: [
+					[0, color],
+					[1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+				]
+			};
+		})
+	});
+
+	// Build the chart
+	Highcharts.chart('grafica', {
+		colors: ['#28a745', '#485063'],
+
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: null
+		},
+		tooltip: {
+			pointFormat: null
+		},
+		accessibility: {
+			point: {
+				valueSuffix: '%'
+			}
+		},
+		credits: { text: ''},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				dataLabels: {
+					enabled: false
+				},
+				showInLegend: true
+			}
+		},
+		series: [{
+			colorByPoint: true,
+			data: [{
+				name: 'Asertividad #{monto}%',
+				y: #{monto},
+			}, {
+				name: 'fallo #{resto}%',
+				y: #{resto}
+			}]
+		}]
+	});
+
+			// pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'

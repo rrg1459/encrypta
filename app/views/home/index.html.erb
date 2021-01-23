@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Home</h1>
+
+<%= render '/home/encabezado' %>
 
 <%= form_with(model: @numero, local: true) do |form| %>
 <!--  -->
@@ -32,7 +33,5 @@
 <% end %>
 <br>
 
-<%= render '/opciones/resultados' %>
 <%= link_to 'Nueva Opción', new_opcion_path %>
-<%= render '/home/botones_generales' %>
 
