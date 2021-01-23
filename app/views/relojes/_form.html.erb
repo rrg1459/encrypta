@@ -1,11 +1,14 @@
 <%= form_with(model: reloj, local: true) do |form| %>
 
-  <div class="field">
-    <%= form.label :minuto %>
-    <%= form.number_field :minuto %>
-  </div>
+	<h5>
+		<div class="field">
+			<%= form.label :minuto %>
+			<%= form.number_field :minuto %>
+		</div>
+	</h5>
+	<br>
+	<div class="">
+		<%= form.button "Guardar", class: "btn btn-outline-warning letra-negra btn-sm mb-3 mx-1" %>
+	</div>
 
-  <div class="actions">
-    <%= form.submit "Guardar" %>
-  </div>
 <% end %>

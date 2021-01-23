@@ -1,11 +1,12 @@
 <%= render '/home/encabezado' %>
 <%= render 'layouts/mensajes' %>
+<h1>Opción</h1>
 <hr>
 <center>
 	<h5>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Canal:
+				Canal
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= @opcion.canal.nombre %></strong>
@@ -14,7 +15,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Par:
+				Par
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= @opcion.par.nombre %></strong>
@@ -23,7 +24,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Resultado:
+				Resultado
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= resultado(@opcion.resultado) %></strong>
@@ -32,7 +33,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Porcentaje:
+				Porcentaje
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= @opcion.porcentaje %> %</strong>
@@ -41,7 +42,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Inversión:
+				Inversión
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= @opcion.inversion %> USD</strong>
@@ -59,7 +60,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Reloj:
+				Reloj
 		</div>
 		<div class="col-md-6" align="left">
 				<strong><%= @opcion.reloj.minuto %> minutos</strong>
