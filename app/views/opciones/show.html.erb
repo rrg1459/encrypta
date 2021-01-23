@@ -1,24 +1,73 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Juliano:</strong>
-  <%= @opcion.juliano %>
-</p>
-
-<p>
-  <strong>Resultado:</strong>
-  <%= @opcion.resultado %>
-</p>
-
-<p>
-  <strong>Porcentaje:</strong>
-  <%= @opcion.porcentaje %>
-</p>
-
-<%= link_to 'Editar', edit_opcion_path(@opcion) %> |
-<%= link_to 'Regresar al listado', opciones_path %> |
-<%= link_to 'Regresar al home', home_path %>
-<br>
-<br>
-<%= link_to 'Nueva Opción', new_opcion_path %>
-<%= render '/home/botones_generales' %>
+<%= render '/home/encabezado' %>
+<%= render 'layouts/mensajes' %>
+<hr>
+<center>
+	<h5>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Canal:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.canal.nombre %></strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Par:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.par.nombre %></strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Resultado:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= resultado(@opcion.resultado) %></strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Porcentaje:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.porcentaje %> %</strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Inversión:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.inversion %> USD</strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Tipo
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.tipo %></strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Reloj:
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.reloj.minuto %> minutos</strong>
+		</div>
+	</div>
+	</h5>
+	<br>
+	<%= link_to 'Editar', edit_opcion_path(@opcion), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+	<%= link_to 'Borrar', @opcion, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+</center>
+<hr>

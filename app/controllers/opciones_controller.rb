@@ -5,6 +5,17 @@ class OpcionesController < ApplicationController
   # GET /opciones.json
   def index
     @opciones = Opcion.all
+    @opcion            = Opcion.new
+    @opcion.juliano    = Opcion.all.size + 1
+    @opcion.inversion  = 1
+    @opcion.porcentaje = 0
+    if Opcion.all.size > 0
+      @opcion.par_id     = Opcion.last.par_id
+      @opcion.reloj_id   = Opcion.last.reloj_id
+      @opcion.canal_id   = Opcion.last.canal_id
+      @opcion.porcentaje = Opcion.last.porcentaje
+      @opcion.inversion  = Opcion.last.inversion
+    end
   end
 
   # GET /opciones/1
@@ -14,12 +25,16 @@ class OpcionesController < ApplicationController
 
   # GET /opciones/new
   def new
-    numero = Numero.first
-    @opcion = Opcion.new
-    @opcion.juliano = Opcion.all.size + 1
+    numero             = Numero.first
+    @opcion            = Opcion.new
+    @opcion.juliano    = Opcion.all.size + 1
     @opcion.porcentaje = numero.porcentaje
-    @opcion.inversion = numero.inversion
-    @opcion.par_id = Opcion.last.par_id if Opcion.all.size > 0
+    @opcion.inversion  = numero.inversion
+    if Opcion.all.size > 0
+      @opcion.par_id     = Opcion.last.par_id
+      @opcion.reloj_id   = Opcion.last.reloj_id
+      @opcion.canal_id   = Opcion.last.canal_id
+    end
   end
 
   # GET /opciones/1/edit
@@ -29,11 +44,8 @@ class OpcionesController < ApplicationController
   # POST /opciones
   # POST /opciones.json
   def create
-    numero             = Numero.first
     @opcion            = Opcion.new(option_params)
     @opcion.juliano    = Opcion.all.size + 1
-    # @opcion.porcentaje = numero.porcentaje
-    @opcion.inversion  = numero.inversion
     @opcion.tipo.downcase!
     respond_to do |format|
       if @opcion.save
@@ -83,6 +95,6 @@ class OpcionesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def option_params
-      params.require(:opcion).permit(:juliano, :resultado, :porcentaje, :canal_id, :par_id, :reloj_id, :tipo)
+      params.require(:opcion).permit(:juliano, :inversion, :resultado, :porcentaje, :canal_id, :par_id, :reloj_id, :tipo)
     end
 end

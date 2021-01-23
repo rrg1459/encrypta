@@ -1,17 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Par:</strong>
-  <%= @par.nombre %>
-</p>
-
-<!-- <p>
-  <%#= image_tag(@par.imagen_url) %>
-</p> -->
-<%= link_to 'Editar', edit_par_path(@par), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
-<%= link_to 'Borrar', @par, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
-
-
-<%= link_to 'Nuevo Par', new_par_path %> |
-<%= link_to 'Regresar al listado', pares_path %>
-<%= render '/home/botones_generales' %>
+<%= render '/home/encabezado' %>
+<%= render 'layouts/mensajes' %>
+<hr>
+<center>
+	<h3>
+		Nombre del Par:
+		<strong><%= @par.nombre %></strong>
+	</h3>
+	<br>
+	<!-- <p>
+		<%#= image_tag(@par.imagen_url) %>
+	</p> -->
+	<%= link_to 'Editar', edit_par_path(@par), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+	<%= link_to 'Borrar', @par, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+</center>
+<hr>

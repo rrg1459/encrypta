@@ -1,12 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Minuto:</strong>
-  <%= @reloj.minuto %>
-</p>
-
-<%= link_to 'Editar', edit_reloj_path(@reloj), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
-<%= link_to 'Borrar', @reloj, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
-
-<%= link_to 'Regresar al listado', relojes_path %>
-<%= render '/home/botones_generales' %>
+<%= render '/home/encabezado' %>
+<%= render 'layouts/mensajes' %>
+<hr>
+<center>
+	<h3>
+		<strong>Minuto del Reloj:</strong>
+		<%= @reloj.minuto %>
+	</h3>
+	<br>
+	<!-- <p>
+		<%#= image_tag(@par.imagen_url) %>
+	</p> -->
+	<%= link_to 'Editar', edit_reloj_path(@reloj), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
+	<%= link_to 'Borrar', @reloj, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
+</center>
+<hr>

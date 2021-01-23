@@ -6,6 +6,7 @@ class CanalesController < ApplicationController
   # GET /pars.json
   def index
     @canales = Canal.all
+    @canal   = Canal.new
   end
 
   # GET /pars/1
@@ -30,7 +31,7 @@ class CanalesController < ApplicationController
     respond_to do |format|
       if @canal.save
         flash[:success] = t(:guardado)
-        format.html { redirect_to @canal }
+        format.html { redirect_to canales_url }
         format.json { render :show, status: :created, location: @canal }
       else
         flash[:error] = t(:no_guardado)

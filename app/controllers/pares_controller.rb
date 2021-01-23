@@ -5,6 +5,7 @@ class ParesController < ApplicationController
   # GET /pars.json
   def index
     @pares = Par.all.order(nombre: :asc)
+    @par   = Par.new
   end
 
   # GET /pars/1
@@ -29,7 +30,7 @@ class ParesController < ApplicationController
     respond_to do |format|
       if @par.save
         flash[:success] = t(:guardado)
-        format.html { redirect_to @par }
+        format.html { redirect_to pares_url }
         format.json { render :show, status: :created, location: @par }
       else
         # flash[:error] = " Tenemos problemas en encontrar este artículo #{root_url}articulo/#{params[:id]}, por favor contactenos para solucionarlo"

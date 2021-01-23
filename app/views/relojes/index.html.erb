@@ -11,7 +11,7 @@
 							<strong><h3>Relojes</h3></strong>
 					</div>
 					<div class="float-right">
-							<%= link_to 'Nuevo Reloj', new_reloj_path, class: "btn btn-outline-warning btn-sm" %>
+							<%= render 'new' %>
 					</div>
 				</div>
 				<div class="col-md-12 my-2">
@@ -19,14 +19,12 @@
 						<thead>
 							<tr>
 								<th>Minuto</th>
-								<th>Acción</th>
 							</tr>
 						</thead>
 						<tbody>
 							<% @relojes.each do |reloj| %>
-								<tr>
+								<tr data-link="<%= reloj_path(reloj) %>"">
 									<td><%= reloj.minuto %></td>
-									<td><%= link_to '', reloj, class:'fa fa-eye btn btn-sm btn-outline-primary', title: 'Ver/Editar/Borrar' %></td>
 								</tr>
 							<% end %>
 						</tbody>

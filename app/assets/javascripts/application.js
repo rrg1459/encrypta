@@ -32,5 +32,9 @@ $(document).on("turbolinks:load", function () {
 		language: { url: "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json" }
 	});
 
+	$("tr[data-link]").click(function() {
+	  window.location = $(this).data("link")
+	});
+
 });
 

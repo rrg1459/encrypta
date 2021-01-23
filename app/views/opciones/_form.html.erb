@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label "Inversion USD" %>
-    <%= form.number_field :inversion, :disabled => true %>
+    <%= form.number_field :inversion, :min => 1 %>
   </div>
 
   <div class="field">
     <%= form.label :porcentaje %>
-    <%= form.number_field :porcentaje %>
+    <%= form.number_field :porcentaje, :min => 1 %>
   </div>
 
   <div class="field">

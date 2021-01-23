@@ -5,6 +5,7 @@ class RelojesController < ApplicationController
   # GET /relojs.json
   def index
     @relojes = Reloj.all
+    @reloj   = Reloj.new
   end
 
   # GET /relojs/1
@@ -29,7 +30,7 @@ class RelojesController < ApplicationController
     respond_to do |format|
       if @reloj.save
         flash[:success] = t(:guardado)
-        format.html { redirect_to @reloj }
+        format.html { redirect_to relojes_url }
         format.json { render :show, status: :created, location: @reloj }
       else
         flash[:error] = t(:no_guardado)
