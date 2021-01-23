@@ -1,6 +1,5 @@
-
 - opcion = Opcion.all
-- monto = opcion.where(resultado: 'G').size * 10000 / opcion.all.size
+- monto = opcion.size > 0 ? opcion.where(resultado: 'G').size * 10000 / opcion.all.size : 10000
 - monto = monto.to_f / 100
 - monto = 100 if monto.nan?
 - resto = 100 - monto
