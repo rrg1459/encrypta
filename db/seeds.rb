@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Opcion.destroy_all
+
 Canal.destroy_all
 
 Canal.create({nombre: 'Mi analisis'})
@@ -45,3 +47,50 @@ Par.create({ nombre: "EUR/NZD" })
 Par.create({ nombre: "GBP/CAD" })
 Par.create({ nombre: "GBP/USD" })
 Par.create({ nombre: "USD/JPY" })
+
+#
+# Datos de prueba
+#
+
+Canal.create({nombre: 'Copy Trading'})
+Canal.create({nombre: 'Señales Gratis opciones'})
+Canal.create({nombre: 'Chat Inter Instituto Trading'})
+Canal.create({nombre: 'Chat Inter Tradinh V2'})
+Canal.create({nombre: 'INVESTING CENTER'})
+Canal.create({nombre: 'INTER TRADING'})
+Canal.create({nombre: 'Señales Gratis Opciones Binarias'})
+
+total_relojes = Reloj.all.size
+total_pares   = Par.all.size
+total_canales = Canal.all.size
+
+for ind in(1..365)
+	rand_resultado = ((ind%10).zero?) ? rand(1..3) : rand(1..2)
+	rand_resultado =  rand(1..2) if rand_resultado == 2 && (ind%5).zero?# esto es para que favorezco a los ganados
+	if rand_resultado == 1 
+		resultado = 'G'
+	elsif rand_resultado == 2
+		resultado = 'P'
+	else
+		resultado = 'E'
+	end
+	porcentaje = 70 + rand(1..18)
+
+	Opcion.create({
+				juliano:    ind,
+				resultado:  resultado,
+				porcentaje: porcentaje,
+				tipo:       (rand(1..2) == 1) ? 'compra' : 'venta',
+				inversion:  rand(1..2),
+				par_id:     rand(1..total_pares),
+				reloj_id:   rand(1..total_relojes),
+				canal_id:   rand(1..total_canales)
+		})
+end
+
+puts
+puts 'total de relojes...: ' + total_relojes.to_s
+puts 'total de pares.....: ' + total_pares.to_s
+puts 'total de canales...: ' + total_canales.to_s
+puts 'total de opciones..: ' + Opcion.all.size.to_s
+puts
