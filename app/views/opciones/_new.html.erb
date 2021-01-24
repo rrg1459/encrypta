@@ -5,7 +5,7 @@
       <tr>
         <th>Canal</th>
         <th>Par</th>
-        <th>Inversión en USD</th>
+        <th>Inversión</th>
         <th>Reloj</th>
         <th>Porcentaje</th>
         <th>Acción</th>
@@ -22,12 +22,12 @@
         </td>
         <td>
           <div class="field">
-            <%= form.select(:par_id, Par.all.order(nombre: :asc).collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un par' }, :required => true) %>
+            <%= form.select(:par_id, Par.all.order(nombre: :asc).collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un par' }, :required => true, :style => "width:110px") %>
           </div>
         </td>
         <td>
           <div class="field">
-            <%= form.number_field :inversion, :required => true, :min => 1 %>
+            <%= form.number_field :inversion, :required => true, :min => 1, :size => '4' %>USD
           </div>
         </td>
         <td>
@@ -37,7 +37,7 @@
         </td>
         <td>
           <div class="field">
-            <%= form.number_field :porcentaje, :required => true, :min => 1 %>
+            <%= form.number_field :porcentaje, :required => true, :min => 1, :size => '4' %>%
           </div>
         </td>
         <td>

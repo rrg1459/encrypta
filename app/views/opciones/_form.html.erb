@@ -19,46 +19,10 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				<%= form.label :juliano %>
-		</div>
-		<div class="col-md-6" align="left">
-				<%= form.number_field :juliano, :disabled => true %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				<%= form.label "Inversion USD" %>
-		</div>
-		<div class="col-md-6" align="left">
-				<%= form.number_field :inversion, :min => 1 %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				<%= form.label :porcentaje %>
-		</div>
-		<div class="col-md-6" align="left">
-				<%= form.number_field :porcentaje, :min => 1 %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
 				<%= form.label :Par %>
 		</div>
 		<div class="col-md-6" align="left">
-				<%= form.select(:par_id, Par.all.order(nombre: :asc).collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un par' }, :required => true) %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				<%= form.label :reloj %>
-		</div>
-		<div class="col-md-6" align="left">
-				<%= form.select(:reloj_id, Reloj.all.collect {|u| ["#{u.minuto} minuto#{u.minuto > 1 ? 's': ''}", u.id]}, { :include_blank => 'Seleccione un reloj' }, :required => true) %>
+				<%= form.select(:par_id, Par.all.order(nombre: :asc).collect {|u| ["#{u.nombre}", u.id]}, { :include_blank => 'Seleccione un par' }, :required => true, :style => "width:150px") %>
 		</div>
 	</div>
 	<br>
@@ -67,7 +31,34 @@
 				<%= form.label :compra_venta %>
 		</div>
 		<div class="col-md-6" align="left">
-				<%= form.select(:tipo, options_for_select(["Compra","Venta"]), { :include_blank => 'Seleccione uno' }, :required => true) %>
+				<%= form.select(:tipo, options_for_select([["Compra","compra"],["Venta","venta"]], selected: opcion.tipo), { :include_blank => 'Seleccione uno' }, :required => true, :style => "width:150px") %>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				<%= form.label :reloj %>
+		</div>
+		<div class="col-md-6" align="left">
+				<%= form.select(:reloj_id, Reloj.all.collect {|u| ["#{u.minuto} minuto#{u.minuto > 1 ? 's': ''}", u.id]}, { :include_blank => 'Seleccione un reloj' }, :required => true, :style => "width:150px") %>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				<%= form.label "Inversión" %>
+		</div>
+		<div class="col-md-6" align="left">
+				<%= form.number_field :inversion, :min => 1, :size => '5' %> USD
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				<%= form.label :porcentaje %>
+		</div>
+		<div class="col-md-6" align="left">
+				<%= form.number_field :porcentaje, :min => 1, :size => '5' %> %
 		</div>
 	</div>
 	<br>
@@ -75,8 +66,9 @@
 		<div class="col-md-6" align="right">
 				<%= form.label :resultado %>
 		</div>
+		<%# byebug %>
 		<div class="col-md-6" align="left">
-				<%= form.select(:resultado, options_for_select([["Ganado","G"],["Perdido","P"],["Empatado","E"]]), { :include_blank => 'Seleccione uno' }, :required => true) %>
+				<%= form.select(:resultado, options_for_select([["Ganado","G"],["Perdido","P"],["Empatado","E"]], selected: opcion.resultado), { :include_blank => 'Seleccione uno' }, :required => true, :style => "width:150px") %>
 		</div>
 	</div>
 	</h5>

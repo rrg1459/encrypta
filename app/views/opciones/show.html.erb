@@ -24,33 +24,6 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Resultado
-		</div>
-		<div class="col-md-6" align="left">
-				<strong><%= resultado(@opcion.resultado) %></strong>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Porcentaje
-		</div>
-		<div class="col-md-6" align="left">
-				<strong><%= @opcion.porcentaje %> %</strong>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Inversión
-		</div>
-		<div class="col-md-6" align="left">
-				<strong><%= @opcion.inversion %> USD</strong>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
 				Tipo
 		</div>
 		<div class="col-md-6" align="left">
@@ -69,13 +42,33 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6" align="right">
-				Monto
+				Inversión
 		</div>
-		<div class="col-md-6 <%= color(@opcion.saldo) %>" align="left">
-				<strong><%= number_to_currency(@opcion.saldo, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></strong>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.inversion %> USD</strong>
 		</div>
 	</div>
-	</h5>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Porcentaje
+		</div>
+		<div class="col-md-6" align="left">
+				<strong><%= @opcion.porcentaje %> %</strong>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6" align="right">
+				Resultado
+		</div>
+		<div class="col-md-6 <%= color(@opcion.saldo) %>" align="left">
+				<strong>
+					<%= resultado(@opcion.resultado) %>
+					<%= number_to_currency(@opcion.saldo, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %>
+				</strong>
+		</div>
+	</div>
 	<br>
 	<%= link_to 'Editar', edit_opcion_path(@opcion), class:'btn btn-sm btn-outline-success', title: 'Editar' %>
 	<%= link_to 'Borrar', @opcion, class:'btn btn-sm btn-outline-danger', method: :delete, data: { title: '¿Está usted seguro?', confirm: ' ', verify: 'si', verify_text: 'Escriba "si" para confirmar', commit: 'Confirma', cancel: 'Cancela' } %>
