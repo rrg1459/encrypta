@@ -32,7 +32,7 @@
         </td>
         <td>
           <div class="field">
-            <%= form.select(:reloj_id, Reloj.all.collect {|u| ["#{u.minuto} minuto#{u.minuto > 1 ? 's': ''}", u.id]}, { :include_blank => 'Seleccione un reloj' }, :required => true) %>
+            <%= form.select(:reloj_id, Reloj.all.collect {|u| ["#{u.minuto} minuto#{u.minuto > 1 ? 's': ''}", u.id]}, { :include_blank => 'Seleccione un reloj' }, :required => true, :style => "width:110px") %>
           </div>
         </td>
         <td>
