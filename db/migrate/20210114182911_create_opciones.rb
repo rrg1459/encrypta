@@ -9,6 +9,7 @@ class CreateOpciones < ActiveRecord::Migration[5.2]
       t.integer :par_id, null: false
       t.integer :reloj_id, null: false
       t.integer :canal_id, null: false
+      t.datetime :traded_at, null: false
 
       t.datetime :created_at, null: false, default: -> { 'CURRENT_TIMESTAMP' }
       t.datetime :updated_at, null: false, default: -> { 'CURRENT_TIMESTAMP' }

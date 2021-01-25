@@ -19,7 +19,8 @@
       <table class="datatable table table-hover table-striped display responsive no-wrap" id="tablas">
         <thead>
           <tr>
-            <th>Juliano</th>
+            <th>#</th>
+            <th>Negociado el</th>
             <th>Inversión</th>
             <th>Par</th>
             <th>Reloj</th>
@@ -29,9 +30,10 @@
           </tr>
         </thead>
         <tbody>
-          <% @opciones.each do |opcion| %>
+          <% @opciones.each.with_index(1) do |opcion, indice| %>
             <tr data-link="<%= opcion_path(opcion) %>", class="<%= color(opcion.saldo) %>">
-              <td><%= opcion.juliano %></td>
+              <td><%= indice %></td>
+              <td><%= l opcion.traded_at.time, format: :negociado %></td>
               <td><%= opcion.inversion %> USD</td>
               <td><%= opcion.par.nombre %></td>
               <!-- <td><%#= image_tag(opcion.par.imagen_url) %></td> -->

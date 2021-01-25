@@ -4,7 +4,7 @@ class OpcionesController < ApplicationController
   # GET /opciones
   # GET /opciones.json
   def index
-    @opciones = Opcion.all
+    @opciones = Opcion.all.order(traded_at: :desc)
     @opcion            = Opcion.new
     @opcion.juliano    = Opcion.all.size + 1
     @opcion.inversion  = 1
@@ -47,6 +47,7 @@ class OpcionesController < ApplicationController
     @opcion            = Opcion.new(option_params)
     @opcion.juliano    = Opcion.all.size + 1
     @opcion.tipo.downcase!
+    @opcion.traded_at  = Time.now
     respond_to do |format|
       if @opcion.save
         flash[:success] = 'IQ Opción CREADA correctamente'

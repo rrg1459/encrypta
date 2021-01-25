@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_182911) do
     t.integer "canal_id", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "traded_at"
   end
 
   create_table "pares", force: :cascade do |t|

@@ -65,28 +65,35 @@ total_pares   = Par.all.size
 total_canales = Canal.all.size
 
 for ind in(1..365)
-	rand_resultado = ((ind%10).zero?) ? rand(1..3) : rand(1..2)
-	rand_resultado =  rand(1..2) if rand_resultado == 2 && (ind%5).zero?# esto es para que favorezco a los ganados
-	if rand_resultado == 1 
-		resultado = 'G'
-	elsif rand_resultado == 2
-		resultado = 'P'
-	else
-		resultado = 'E'
-	end
-	porcentaje = 70 + rand(1..18)
+	dias = rand(0..3)
+	next if dias.zero?
+	for dia in(1..dias)
+		rand_resultado = ((ind%10).zero?) ? rand(1..3) : rand(1..2)
+		rand_resultado =  rand(1..2) if rand_resultado == 2 && (ind%5).zero?# esto es para que favorezco a los ganados
+		if rand_resultado == 1 
+			resultado = 'G'
+		elsif rand_resultado == 2
+			resultado = 'P'
+		else
+			resultado = 'E'
+		end
+		porcentaje = 70 + rand(1..18)
 
-	Opcion.create({
-				juliano:    ind,
-				resultado:  resultado,
-				porcentaje: porcentaje,
-				tipo:       (rand(1..2) == 1) ? 'compra' : 'venta',
-				inversion:  rand(1..2),
-				par_id:     rand(1..total_pares),
-				reloj_id:   rand(1..total_relojes),
-				canal_id:   rand(1..total_canales)
-		})
+		Opcion.create({
+					juliano:    Opcion.all.size + 100001,
+					traded_at:  Time.now - ind.days,
+					resultado:  resultado,
+					porcentaje: porcentaje,
+					tipo:       (rand(1..2) == 1) ? 'compra' : 'venta',
+					inversion:  rand(1..2),
+					par_id:     rand(1..total_pares),
+					reloj_id:   rand(1..total_relojes),
+					canal_id:   rand(1..total_canales)
+			})
+	end
 end
+
+# Opcion.where("juliano < 0").delete_all
 
 puts
 puts 'total de relojes...: ' + total_relojes.to_s

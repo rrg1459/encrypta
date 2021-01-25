@@ -45,13 +45,14 @@ es:
       - viernes
       - sábado
     formats:
+      negociado: ! "%a, %e %b %Y"
       default: ! "%d-%m-%Y"
       long: ! "%A, %d de %B de %Y"
       short: ! "%d de %b"
       solo_anio: ! "%Y"
       yymmdd: ! "%y-%m-%d"
       nom_mes_anio: ! "%B - %Y"
-      largo: ! "%A, %d de %B de %Y"
+      largo: ! "%a, %e %b %Y"
     month_names:
       -
       - enero
@@ -232,6 +233,7 @@ es:
   time:
     am: am
     formats:
+      negociado: ! "%a, %e %b %Y"
       default: ! "%a, %d de %b de %Y a las %H:%M:%S %Z"
       long: ! "%A, %d de %B de %Y a las %I:%M %p"
       short: ! "%d de %b a las %H:%M hrs"
