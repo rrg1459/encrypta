@@ -3,42 +3,49 @@
 
 <%= render '/home/encabezado' %>
 
-<%= form_for(@encrypta, url: procesa_path, html: { method: :post })  do |form| %>
+<center>
+<h1>
+<%= @str %>
+</h1>
+</center>
 
-<%#= form_with(model: @encrypta, local: true) do |form| %>
-  <% if @encrypta.errors.any? %>
-    <div id="error_explanation">
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for(@encrypta, url: procesa_cifrado_path, html: { method: :post })  do |form| %>
+        <% if @encrypta.errors.any? %>
+          <div id="error_explanation">
+            <ul>
+            <% @encrypta.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-      <ul>
-      <% @encrypta.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="field">
+          <%= form.label :inicial %>
+          <%= form.number_field :inicial %>
+        </div>
+        <br>
+
+        <div class="field">
+          <%= form.label :clave %>
+          <%= form.text_area :clave, :rows => 1, :cols => 55, :class => "form-control" %>
+        </div>
+        <br>
+        <div class="field">
+          <%= form.label :mensaje %>
+          <%= form.text_area :mensaje, :rows => 4, :cols => 55, :class => "form-control" %>
+        </div>
+        <br>
+        <center>
+          <button type="submit" class="btn btn-outline-dark letra-negra largo"><%= @str %></button>
+        </center>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :inicial %>
-    <%= form.number_field :inicial %>
+    <div class="col-md-6" align="left">
+        <%= "Mensaje cifrado: #{@cifrado}" if @cifrado %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :clave %>
-    <%= form.text_field :clave %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mensaje %>
-    <%= form.text_field :mensaje %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<hr>
-
-<h3>
-<%= "Mensaje cifrado: #{@cifrado}" if @cifrado %>
 </h3>

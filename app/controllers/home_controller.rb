@@ -1,12 +1,18 @@
 class HomeController < ApplicationController
 
   def index
-    @str = 'KABUMMM'
+    @str = 'Programa de cifrado de mensajes'
+    $cifrado = nil
+    $encrypta = nil
   end
 
   def cifra
     # byebug
     @str = 'Cifra'
+    if params[:limpia]
+      $cifrado = nil
+      $encrypta = nil
+    end
     
     if $cifrado.present?
       @cifrado = $cifrado
@@ -19,7 +25,19 @@ class HomeController < ApplicationController
   end
 
   def descifra
-    @str = 'Desifra'
+    @str = 'Descifra'
+    if params[:limpia]
+      $cifrado = nil
+      $encrypta = nil
+    end
+    
+    if $cifrado.present?
+      @cifrado = $cifrado
+      @encrypta = $encrypta
+    else
+      $cifrado = nil
+      @encrypta = Encrypta.new
+    end
   end
 
   def todo
@@ -30,11 +48,24 @@ class HomeController < ApplicationController
     @str = 'Explica'
   end
 
-  def procesa
+  def procesa_cifrado
     @encrypta = Encrypta.new(params.require(:encrypta).permit(:inicial, :clave, :mensaje))
+    @str = 'Cifra'
     if @encrypta.valid?
-      # redirect_to cifra_url("esto es yun mensaje de pruebas")
-      # redirect_to cifra_url({ "inicial": @encrypta.inicial, "clave": @encrypta.clave, "mensaje": "esto es yun mensaje de pruebas"})
+      $cifrado = 'aasaa'
+      $encrypta = @encrypta
+      redirect_to cifra_url
+    else
+      $encrypta = nil
+      $cifrado = nil
+      render 'cifra'
+    end
+  end
+
+  def procesa_descifrado
+    @encrypta = Encrypta.new(params.require(:encrypta).permit(:inicial, :clave, :mensaje))
+    @str = 'Cifra'
+    if @encrypta.valid?
       $cifrado = 'aasaa'
       $encrypta = @encrypta
       redirect_to cifra_url

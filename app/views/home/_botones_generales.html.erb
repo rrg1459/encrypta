@@ -1,13 +1,15 @@
 <br>
 <br>
-<br>
-<%= link_to 'Sólo cifra', cifra_path, :class=> "btn btn-outline-primary letra-negra largo" %>
-<br>
-<br>
-<%= link_to 'Sólo descifra', descifra_path, :class=> "btn btn-outline-success letra-negra largo" %>
+<%= link_to 'Home', root_path, :class=> "btn btn-outline-info letra-negra largo" %>
 <br>
 <br>
-<%= link_to 'Cifra y descifra', todo_path, :class=> "btn btn-outline-warning letra-negra largo" %>
+<%= link_to 'Sólo cifra', cifra_path({"limpia": true}), :class=> "btn btn-outline-primary letra-negra largo" %>
+<br>
+<br>
+<%= link_to 'Sólo descifra', descifra_path({"limpia": true}), :class=> "btn btn-outline-success letra-negra largo" %>
+<br>
+<br>
+<%= link_to 'Cifra y descifra', todo_path({"limpia": true}), :class=> "btn btn-outline-warning letra-negra largo" %>
 <br>
 <br>
 <%= link_to 'Explicación', explica_path, :class=> "btn btn-outline-danger letra-negra largo" %>

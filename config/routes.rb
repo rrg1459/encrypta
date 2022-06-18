@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get 'home/todo', as: 'todo'
   get 'home/explica', as: 'explica'
 
-  post 'home/procesa', as: 'procesa'
+  post 'home/procesa_cifrado', as: 'procesa_cifrado'
+  post 'home/procesa_descifrado', as: 'procesa_descifrado'
 end
