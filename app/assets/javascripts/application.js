@@ -18,8 +18,8 @@
 //= require popper
 //= require bootstrap-sprockets
 
-//= require dataTables/jquery.dataTables
-//= require dataTables/extras/dataTables.responsive
+// require dataTables/jquery.dataTables
+// require dataTables/extras/dataTables.responsive
 
 //= require data-confirm-modal
 
@@ -27,10 +27,10 @@
 
 $(document).on("turbolinks:load", function () {
 
-	$('#tablas').DataTable({
-		responsive: true,
-		language: { url: "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json" }
-	});
+	// $('#tablas').DataTable({
+	// 	responsive: true,
+	// 	language: { url: "//cdn.datatables.net/plug-ins/1.10.10/i18n/Spanish.json" }
+	// });
 
 	$("tr[data-link]").click(function() {
 	  window.location = $(this).data("link")
