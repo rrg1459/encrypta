@@ -1,9 +1,23 @@
 class HomeController < ApplicationController
 
 	def index
-		$inversion  = 1
-		$porcentaje = 87
-		@numero = Numero.first
+		@str = 'KABUMMM'
 	end
+
+  def cifra
+		@str = 'Cifra'
+  end
+
+  def descifra
+		@str = 'Desifra'
+  end
+
+  def todo
+		@str = 'Cifra y descifra'
+  end
+
+  def explica
+		@str = 'Explica'
+  end
 
 end

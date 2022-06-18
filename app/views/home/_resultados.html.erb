@@ -1,64 +1,61 @@
-<% opcion = Opcion.all %>
-<% monto = opcion.where(resultado: 'G').size.to_f * 100 / opcion.all.size %>
-<% balance = opcion.saldo_total - Numero.first.fondo %>
+<br>
+<center>
+<h1>
+Unefa - Vargas
+<br>
+</h1>
+</center>
 <br>
 <br>
-<br>
-<br>
-<br>
-<h4>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Fondo
-		</div>
-		<div class="col-md-6" align="left">
-				<%= number_to_currency(Numero.first.fondo, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Saldo
-		</div>
-		<div class="col-md-6" align="left">
-				<%= number_to_currency(opcion.saldo_total, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Ganados
-		</div>
-		<div class="col-md-6" align="left">
-			<%= "#{opcion.where(resultado: 'G').size}" %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Perdidos
-		</div>
-		<div class="col-md-6" align="left">
-				<%= "#{opcion.where(resultado: 'P').size}" %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Empatados
-		</div>
-		<div class="col-md-6" align="left">
-				<%= "#{opcion.where(resultado: 'E').size}" %>
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-md-6" align="right">
-				Balance general
-		</div>
-		<div class="col-md-6 <%= color(balance) %>" align="left">
-				<strong><%= number_to_currency(balance, unit: "USD ", separator: ",", delimiter: ".", precision: 2) %></strong>
-		</div>
-	</div>
-</h4>
+<h5>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Carrera
+    </div>
+    <div class="col-md-6" align="left">
+        Ingeniería de Sistemas
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Sección
+    </div>
+    <div class="col-md-6" align="left">
+        09S-2622-N1
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Materia
+    </div>
+    <div class="col-md-6" align="left">
+        Auditoría de Sistemas
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Código
+    </div>
+    <div class="col-md-6" align="left">
+        SYC-32814
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Alumno
+    </div>
+    <div class="col-md-6" align="left">
+        Rafael Rodríguez García
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" align="right">
+        Cédula
+    </div>
+    <div class="col-md-6" align="left">
+        7.991.459
+    </div>
+  </div>
+</h5>
 <br>

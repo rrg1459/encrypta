@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :relojes
   resources :numeros
   resources :opciones
-	root "opciones#index"
+  root "home#index"
 
-  # get 'home/index', as: 'home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'home/cifra', as: 'cifra'
+  get 'home/descifra', as: 'descifra'
+  get 'home/todo', as: 'todo'
+  get 'home/explica', as: 'explica'
 end
