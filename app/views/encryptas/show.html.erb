@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inicial:</strong>
+  <%= @encrypta.inicial %>
+</p>
+
+<p>
+  <strong>Clave:</strong>
+  <%= @encrypta.clave %>
+</p>
+
+<%= link_to 'Edit', edit_encrypta_path(@encrypta) %> |
+<%= link_to 'Back', encryptas_path %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :encryptas
   resources :canales
   resources :pares
   resources :relojes
@@ -11,4 +12,6 @@ Rails.application.routes.draw do
   get 'home/descifra', as: 'descifra'
   get 'home/todo', as: 'todo'
   get 'home/explica', as: 'explica'
+
+  post 'home/procesa', as: 'procesa'
 end

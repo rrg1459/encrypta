@@ -3,8 +3,42 @@
 
 <%= render '/home/encabezado' %>
 
+<%= form_for(@encrypta, url: procesa_path, html: { method: :post })  do |form| %>
+
+<%#= form_with(model: @encrypta, local: true) do |form| %>
+  <% if @encrypta.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @encrypta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :inicial %>
+    <%= form.number_field :inicial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clave %>
+    <%= form.text_field :clave %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mensaje %>
+    <%= form.text_field :mensaje %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<hr>
+
 <h3>
-<%= @str%>
+<%= "Mensaje cifrado: #{@cifrado}" if @cifrado %>
 </h3>
-
-
