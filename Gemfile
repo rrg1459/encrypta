@@ -74,3 +74,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'    # This gem provides jQuery and the j
 # gem 'jquery-datatables-rails', '~> 3.4.0'
 
 # gem 'data-confirm-modal'
+
+gem "jwt", "~> 2.4"
+
+gem "hashid-rails", "~> 1.4"

@@ -1,79 +1,63 @@
 class HomeController < ApplicationController
 
+  before_action :set_encrypta, only: %i[ cifra descifra ]
+
   def index
     @str = 'Programa de cifrado de mensajes'
-    $cifrado = nil
-    $encrypta = nil
   end
 
   def cifra
-    # byebug
-    @str = 'Cifra'
-    if params[:limpia]
-      $cifrado = nil
-      $encrypta = nil
-    end
-    
-    if $cifrado.present?
-      @cifrado = $cifrado
-      @encrypta = $encrypta
-    else
-      $cifrado = nil
-      @encrypta = Encrypta.new
-    end
-
+    @str = 'cifra'
+    @url = procesa_cifrado_path
   end
 
   def descifra
-    @str = 'Descifra'
-    if params[:limpia]
-      $cifrado = nil
-      $encrypta = nil
-    end
-    
-    if $cifrado.present?
-      @cifrado = $cifrado
-      @encrypta = $encrypta
+    @str = 'descifra'
+    @url = procesa_descifrado_path
+  end
+
+  def todo
+    @str = 'cifra y descifra'
+  end
+
+  def explica
+    @str = 'explica'
+  end
+
+  def procesa_cifrado
+    @str = 'cifra'
+    @url = procesa_cifrado_path
+    valida_y_guarda
+  end
+
+  def procesa_descifrado
+    @str = 'descifra'
+    @url = procesa_descifrado_path
+    valida_y_guarda
+  end
+
+  private
+
+  def set_encrypta
+    if params[:miniclave].present?
+      @encrypta = Encrypta.find_by_hashid(params[:miniclave])
     else
-      $cifrado = nil
       @encrypta = Encrypta.new
     end
   end
 
-  def todo
-    @str = 'Cifra y descifra'
-  end
-
-  def explica
-    @str = 'Explica'
-  end
-
-  def procesa_cifrado
-    @encrypta = Encrypta.new(params.require(:encrypta).permit(:inicial, :clave, :mensaje))
-    @str = 'Cifra'
+  def valida_y_guarda
+    @encrypta = Encrypta.new(encrypta_params)
     if @encrypta.valid?
-      $cifrado = 'aasaa'
-      $encrypta = @encrypta
-      redirect_to cifra_url
+      @encrypta.save
+      redirect_to action: @str, miniclave: @encrypta.hashid
     else
-      $encrypta = nil
-      $cifrado = nil
-      render 'cifra'
+      render @str
     end
   end
 
-  def procesa_descifrado
-    @encrypta = Encrypta.new(params.require(:encrypta).permit(:inicial, :clave, :mensaje))
-    @str = 'Cifra'
-    if @encrypta.valid?
-      $cifrado = 'aasaa'
-      $encrypta = @encrypta
-      redirect_to cifra_url
-    else
-      $encrypta = nil
-      $cifrado = nil
-      render 'cifra'
-    end
+  def encrypta_params
+    params.require(:encrypta).permit(:inicial, :clave, :mensaje).merge(tipo: @str)
   end
 
 end
