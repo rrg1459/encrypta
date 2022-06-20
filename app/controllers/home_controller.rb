@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  before_action :set_encrypta, only: %i[ cifra descifra ]
+  before_action :set_encrypta, only: %i[ cifra descifra todo ]
 
   def index
     @str = 'Programa de cifrado de mensajes'
@@ -20,6 +20,7 @@ class HomeController < ApplicationController
 
   def todo
     @str = 'cifra y descifra'
+    @url = procesa_todo_path
   end
 
   def explica
@@ -27,6 +28,7 @@ class HomeController < ApplicationController
   end
 
   def procesa_cifrado
+    # byebug
     @str = 'cifra'
     @url = procesa_cifrado_path
     valida_y_guarda
@@ -35,6 +37,14 @@ class HomeController < ApplicationController
   def procesa_descifrado
     @str = 'descifra'
     @url = procesa_descifrado_path
+    valida_y_guarda
+  end
+
+  def procesa_todo
+    # byebug
+    # @str = 'cifra y descifra'
+    @str = 'todo'
+    @url = procesa_todo_path
     valida_y_guarda
   end
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   post '/procesa_cifrado', to: 'home#procesa_cifrado', as: 'procesa_cifrado'
   post '/procesa_descifrado', to: 'home#procesa_descifrado', as: 'procesa_descifrado'
+  post '/procesa_todo', to: 'home#procesa_todo', as: 'procesa_todo'
 
   # post 'home/procesa_cifrado', as: 'procesa_cifrado'
   # post 'home/procesa_descifrado', as: 'procesa_descifrado'
