@@ -38,10 +38,21 @@
           <button type="submit" class="btn btn-outline-dark letra-negra largo"><%= @str.capitalize %></button>
         </center>
       <% end %>
+
     </div>
-    <div class="col-md-6" align="left">
-        <%= "Mensaje descifrado: #{@descifrado}" if @descifrado %>
-    </div>
+      <div class="col-md-6" align="left">
+        <br><br>
+        <h5>
+          <% if @cifrado %>
+            <b>Mensaje cifrado:</b><br><br><%= @cifrado %>
+            <br><br><br><br>
+          <% end %>
+          <% if @descifrado %>
+            <b>Mensaje descifrado:</b><br><br><%= @descifrado %>
+          <% end %>
+        </h5>
+      </div>
+
   </div>
 
 </h3>

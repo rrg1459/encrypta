@@ -9,11 +9,13 @@ class HomeController < ApplicationController
   def cifra
     @str = 'cifra'
     @url = procesa_cifrado_path
+    @descifrado = nil
   end
 
   def descifra
     @str = 'descifra'
     @url = procesa_descifrado_path
+    @cifrado = nil
   end
 
   def todo
@@ -39,7 +41,16 @@ class HomeController < ApplicationController
   private
 
   def set_encrypta
+
+    # byebug
+    # #
+    # #! creo que aqui va el codigo que cifra o la llamada al metodo
+    # #
     if params[:miniclave].present?
+      @cifrado = 'este mensaje esta cifrado'
+      @descifrado = 'este mensaje esta descifrado'
+      # @descifrado = nil if @str == 'cifrado'
+      # @cifrado = nil if @str == 'descifrado'
       @encrypta = Encrypta.find_by_hashid(params[:miniclave])
     else
       @encrypta = Encrypta.new
