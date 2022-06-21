@@ -18,7 +18,13 @@ class Encrypta < ApplicationRecord
   end
 
   def integridad
-    # byebug
+    if mensaje.size % 3 != 0
+      errors.add(:mensaje, " cifrado está corrupto")
+    else
+      mensaje.split('').uniq.sort.each do |letra|
+        errors.add(:mensaje, " cifrado está corrupto") if clave.split('').uniq.sort.join().exclude? letra
+      end
+    end
   end
 
 end

@@ -28,7 +28,6 @@ class HomeController < ApplicationController
   end
 
   def procesa_cifrado
-    # byebug
     @str = 'cifra'
     @url = procesa_cifrado_path
     valida_y_guarda
@@ -41,8 +40,6 @@ class HomeController < ApplicationController
   end
 
   def procesa_todo
-    # byebug
-    # @str = 'cifra y descifra'
     @str = 'todo'
     @url = procesa_todo_path
     valida_y_guarda
@@ -51,21 +48,71 @@ class HomeController < ApplicationController
   private
 
   def set_encrypta
-
-    # byebug
-    # #
-    # #! creo que aqui va el codigo que cifra o la llamada al metodo
-    # #
     if params[:miniclave].present?
-      @cifrado = 'este mensaje esta cifrado'
-      @descifrado = 'este mensaje esta descifrado'
-      # @descifrado = nil if @str == 'cifrado'
-      # @cifrado = nil if @str == 'descifrado'
       @encrypta = Encrypta.find_by_hashid(params[:miniclave])
+      if params[:action] == 'descifra'
+        descifra_mensaje
+      else
+        cifra_mensaje
+        @descifrado = @encrypta.mensaje if params[:action] == 'todo'
+      end
     else
       @encrypta = Encrypta.new
     end
   end
+  
+  def cifra_mensaje
+    frase = @encrypta.mensaje
+    arreglo = frase.split('')
+    ascii= []
+    res = []
+    cifrado = []
+    inicial = @encrypta.inicial
+    clave = @encrypta.clave
+    clave = clave.split('').uniq[0..9].join
+    arreglo2 = []
+    frase.each_byte.with_index do |char, index|
+      arreglo2.push char
+      ascii[index] = char + inicial
+    end
+    frase.size.times do |index|
+      res[index] = ascii[index] - inicial
+      xx = ascii[index].to_s.split('').map(&:to_i)
+      letter = "#{clave[xx[0]]}#{clave[xx[1]]}#{clave[xx[2]]}"
+      cifrado.push letter
+    end
+    @cifrado = cifrado.join()
+  end
+
+  def descifra_mensaje
+    ascii= []
+    res = []
+    cifrado = []
+    descifrado = []
+    inicial = @encrypta.inicial
+    # clave = @encrypta.clave.split('').uniq[0..9].join()
+    clave = @encrypta.clave.split('').uniq[0..9].join
+    # byebug
+    mensaje = @encrypta.mensaje.squish
+    letra = []
+    mensaje.split('').each do |x|
+      letra.push x
+      if letra.size == 3
+        cifrado.push letra.join()
+        letra = []
+      end
+    end
+
+    cifrado.each do |letra_cifrada|
+      print letra_cifrada
+      xx = letra_cifrada.split('')
+      letra = ("#{clave.index(xx[0])}#{clave.index(xx[1])}#{clave.index(xx[2])}".to_i) - inicial
+      descifrado.push letra.chr
+    end
+    @descifrado = descifrado.join()
+
+  end
+
 
   def valida_y_guarda
     @encrypta = Encrypta.new(encrypta_params)
