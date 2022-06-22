@@ -18,20 +18,31 @@
           </div>
         <% end %>
 
-        <div class="field">
-          <%= form.label :inicial %>
-          <%= form.number_field :inicial %>
-        </div>
-        <br>
+       <% mensaje_clave = 'Mensaje descifrado' %>
+        <% if @str == 'descifra' %>
+          <% label_clave = 'Clave de salida' %>
+          <% mensaje_clave = 'Mensaje cifrado' %>
+        <% elsif @str == 'cifra y descifra' %>
+          <% label_clave = 'Clave de entrada y salida' %>
+        <% else %>
+          <% label_clave = 'Clave de entrada' %>
+        <% end %>
 
-        <div class="field">
-          <%= form.label :clave %>
-          <%= form.text_area :clave, :rows => 1, :cols => 55, :class => "form-control" %>
-        </div>
-        <br>
-        <div class="field">
-          <%= form.label :mensaje %>
-          <%= form.text_area :mensaje, :rows => 4, :cols => 55, :class => "form-control" %>
+        <div class="container">
+          <div class="field">
+            <div class="ajusta"><%= "Clave inicial" %></div>
+            <%= form.number_field :inicial %>
+          </div>
+          <br>
+          <div class="field">
+            <div class="ajusta"><%= label_clave %></div>
+            <%= form.text_area :clave, :rows => 1, :cols => 55, :class => "form-control" %>
+          </div>
+          <br>
+          <div class="field">
+            <div class="ajusta"><%= mensaje_clave %></div>
+            <%= form.text_area :mensaje, :rows => 4, :cols => 55, :class => "form-control" %>
+          </div>
         </div>
         <br>
         <center>

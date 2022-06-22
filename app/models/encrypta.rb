@@ -11,13 +11,14 @@ class Encrypta < ApplicationRecord
 
   validate :minimo_10_caracteres
   
-  validate :integridad, if: -> { self.tipo == 'descifra' }
+  validate :integridad, if: -> { tipo == 'descifra' }
 
   def minimo_10_caracteres
     errors.add(:clave, "debe tener por lo menos 10 caracteres diferentes") if clave.split('').uniq.size < 10
   end
 
   def integridad
+    mensaje.strip!
     if mensaje.size % 3 != 0
       errors.add(:mensaje, " cifrado está corrupto")
     else

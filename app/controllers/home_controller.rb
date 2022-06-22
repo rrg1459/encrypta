@@ -90,10 +90,8 @@ class HomeController < ApplicationController
     cifrado = []
     descifrado = []
     inicial = @encrypta.inicial
-    # clave = @encrypta.clave.split('').uniq[0..9].join()
     clave = @encrypta.clave.split('').uniq[0..9].join
-    # byebug
-    mensaje = @encrypta.mensaje.squish
+    mensaje = @encrypta.mensaje.strip
     letra = []
     mensaje.split('').each do |x|
       letra.push x
@@ -107,10 +105,16 @@ class HomeController < ApplicationController
       print letra_cifrada
       xx = letra_cifrada.split('')
       letra = ("#{clave.index(xx[0])}#{clave.index(xx[1])}#{clave.index(xx[2])}".to_i) - inicial
+      raise "Clave inicial o de salida no corresponden al mensaje cifrado" if letra < 0
       descifrado.push letra.chr
     end
     @descifrado = descifrado.join()
 
+    rescue Exception => exc
+      @encrypta.errors.add(:base, exc.message)
+      @str = 'descifra'
+      @url = procesa_descifrado_path
+      render "descifra"
   end
 
 
