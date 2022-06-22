@@ -7,11 +7,11 @@
 	color: green;
 }
 
-.rojo {
+rojo {
 	color: red;
 }
 
-.gris {
+gris {
 	color: gray;
 }
 
@@ -34,4 +34,17 @@ th, td {
 
 .datatable tr {
 	cursor: pointer;
+}
+
+p,li {
+  color: green;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  text-align: justify;
+  text-justify: inter-word;
+  // fon
+}
+
+azul {
+  color: blue;
 }
