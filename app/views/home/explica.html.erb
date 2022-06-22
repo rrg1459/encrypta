@@ -3,8 +3,29 @@
 
 <%= render '/home/encabezado' %>
 
+<br>
 <h3>
-<%= @str%>
+<center><%= @str%></center>
 </h3>
-
-
+<br>
+<p>La clave inicial es para nivelar cada carácter a cifrar en 3 dígitos y poder desencriptar siguiendo un patrón múltiplo de 3 en la frase encriptada, para asegurar este resultado se limitó la clave inicial entre los números 236 y 632.</p>
+<p>La clave de salida es exactamente igual a la clave de entrada y está formada por los primero 10 caracteres que no se repitan, esto en si mismo tiene un complejidad que dentro de una clave totalmente aleatoria se puede determinar los caracteres que se quieren usar, descartando el resto de los caracteres como señuelo para desviar la atención sobre el mensaje a descifrar, la clave de entrada/salida pueden ser números, letras, emoticones, alfabeto de otros idiomas, o una combinación de todo esto, a continuación una lista de posibles claves de entrada/salida que se pueden usar:</p>
+<p>El método para cifra es el siguiente:</p>
+<p>Supongamos que tenemos una clave inicial de 236<br>
+clave de salida abcdefghij<br>
+y el mensaje a cifrar la l
+<p>El código ASCII para la letra h es el 104, 104 mas la clave inicial 236 da el número<br>340 = 104 + 236<br>la clave inicial es abcdefghij que es exactametne igual al arreglo<br>[“a”, ”b”, ”c”, ”d”, ”e”, ”f”, ”g”, ”h”, ”i”, ”j” ]<br>sustituyendo los valores de las posiciones <b>3, 4, 0</b> del arreglo nos da un nuevo arreglo con los valores [”d”, ”e”, ”a”] que se pueden unir como una cadena de caracteres y mostrarse como salida dea, ese es el mensaje cifrado para la letra h, lo puede verificar en el programa.</p>
+<br>
+<p>Casos importantes cuando se quiere descifrar un mensaje: </p>
+<p>Si el mensaje cifrado no corresponde a un múltiplo de 3 dígitos, esto quiere decir que al mensaje cifrado se le agrega uno o dos caracteres o se les quita uno o dos caracteres el sistema lo interpretará como mensaje corrompido.</p>
+<p>Si el mensaje cifrado tiene por lo menos un caracter que no forma parte de la cadena de entrada, el sistema lo interpretará como mensaje corrompido.</p>
+<p>Si la clave inicial y la clave de entrada no son EXACTAMENTE igual a la clave inicial y la clave de entrada cuando se cifró el mensaje, el sistema puede intentar descifrar el mensaje y pueden ocurrir dos escenarios, el primero es que el mensaje descifrado no es el que se espera por razones obvias y el segundo que el sistema se escape de los caracteres ASCII y el sistema responderá con el mensaje: <b>"Clave inicial o de salida no corresponden al mensaje cifrado"</b></p>
+<p>Se usó el framework Ruby on Rails y el código fuente se puede ver/descargar/clonar en esta dirección:</p>
+<p>http:githuib.com/frrrrr</p>
+<center>
+<h4>Código central para cifrar los mensajes</h4>
+<img src="../uploads/descifra_mensaje.png" alt="Lógica de descifrar mensaje">
+<br><br><br>
+<h4>Código central para cifrar los mensajes</h4>
+<img src="../uploads/cifra_mensaje.png" alt="Lógica de cifrar mensaje">
+</center>

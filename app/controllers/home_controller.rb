@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   end
 
   def explica
-    @str = 'explica'
+    @str = 'Sistema de encriptamiento y desencriptamiento con dos claves'
   end
 
   def procesa_cifrado
