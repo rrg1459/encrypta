@@ -1,7 +1,8 @@
 <%= render '/home/encabezado' %>
 <center>
 <h1>
-<%= @str.capitalize %>
+<% etiqueta = @str == 'todo' ? 'Cifra y descifra' : @str %>
+<%= etiqueta.capitalize %>
 </h1>
 </center>
 
@@ -46,7 +47,7 @@
         </div>
         <br>
         <center>
-          <button type="submit" class="btn btn-outline-dark letra-negra largo"><%= @str.capitalize %></button>
+          <button type="submit" class="btn btn-outline-dark letra-negra largo"><%= etiqueta.capitalize %></button>
         </center>
       <% end %>
 
